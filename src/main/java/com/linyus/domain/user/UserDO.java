@@ -1,4 +1,4 @@
-package com.linyus.domain.jpa;
+package com.linyus.domain.user;
 
 import java.io.Serializable;
 import java.util.Date;

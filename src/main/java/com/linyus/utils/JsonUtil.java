@@ -1,6 +1,8 @@
 package com.linyus.utils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JsonUtil {
 
 	private static ObjectMapper mapper = new ObjectMapper();
+	private static Logger logger = LoggerFactory.getLogger(JsonUtil.class);
 	
 	/**
 	 * object转换为json
@@ -19,7 +22,7 @@ public class JsonUtil {
 		try {
 			return mapper.writeValueAsString(data);
 		} catch (Exception e) {
-			System.err.println("json格式转换异常, " + e);
+			logger.error("json格式转换异常, " + e);
 		}
 		return null;
 	}
@@ -32,7 +35,7 @@ public class JsonUtil {
 			try {
 				return mapper.readValue(json, clazz);
 			} catch (Exception e) {
-				System.err.println("json格式转换异常, " + e);
+				logger.error("json格式转换异常, " + e);
 			}
 		}
 		return null;
@@ -46,7 +49,7 @@ public class JsonUtil {
 			try {
 				return mapper.readValue(json, typeRef);
 			} catch (Exception e) {
-				System.err.println("json格式转换异常, " + e);
+				logger.error("json格式转换异常, " + e);
 			}
 		}
 		return null;
